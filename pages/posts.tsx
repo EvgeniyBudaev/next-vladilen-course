@@ -46,9 +46,9 @@ export default function Posts({ posts: serverPosts }: PostsPageProps): JSX.Eleme
 }
 
 Posts.getInitialProps = async ({req}: NextPageContext) => {
-  // if (!req) {
-  //   return {posts: null}
-  // }
+  if (!req) {
+    return {posts: null}
+  }
 
   const response = await fetch(`${process.env.API_URL}/posts`)
   const posts: MyPost[] = await response.json()
